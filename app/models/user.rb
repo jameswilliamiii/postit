@@ -4,17 +4,24 @@ class User < ApplicationRecord
   #-----------------------------------------------------------------------------
 
   has_many :posts, dependent: :destroy
+  has_many :sessions, dependent: :destroy
 
   #-----------------------------------------------------------------------------
   # Validations
   #-----------------------------------------------------------------------------
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email_address, presence: true, uniqueness: true
 
   #-----------------------------------------------------------------------------
   # Authentication
   #-----------------------------------------------------------------------------
 
   has_secure_password
+
+  #-----------------------------------------------------------------------------
+  # Attributes
+  #-----------------------------------------------------------------------------
+
+  normalizes :email_address, with: ->(e) { e.strip.downcase }
 end

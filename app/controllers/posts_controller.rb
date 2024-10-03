@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :authorize_user!, only: %i[ edit update destroy ]
 
   # GET /posts
   def index
@@ -45,9 +46,13 @@ class PostsController < ApplicationController
       @post = Post.find(params.expect(:id))
     end
 
-
     def post_params
-      # TODO: merge user_id from current user once authentication is built.
-      params.expect(post: [ :title, :message, :user_id ])
+      params.expect(post: [ :title, :message, :user_id ]).merge(user_id: current_user.id)
+    end
+
+    def authorize_user!
+      return if @post.user == current_user
+
+      redirect_to posts_path
     end
 end
