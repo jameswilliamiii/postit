@@ -4,6 +4,8 @@ require "rails/test_help"
 require "minitest/autorun"
 require "mocha/minitest"
 
+Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
@@ -14,6 +16,7 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include FactoryBot::Syntax::Methods
+    include AuthenticationHelper
   end
 end
 
