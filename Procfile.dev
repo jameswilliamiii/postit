@@ -1,5 +1,6 @@
 web: bin/rails server
-css: bin/rails tailwindcss:watch
+css: yarn build:css --watch
+js: yarn build --watch
 
 # Uncomment the below to run solid_queue in development
 # worker: bundle exec rake solid_queue:start
