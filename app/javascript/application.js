@@ -4,3 +4,4 @@ import "trix"
 import "@rails/actiontext"
 import "./controllers"
 import "rbui-js"
+import "flowbite/dist/flowbite.turbo.js";

@@ -1,0 +1,17 @@
+[multiple]:focus, [type=date]:focus, [type=datetime-local]:focus, [type=email]:focus, [type=month]:focus, [type=number]:focus,
+[type=password]:focus, [type=search]:focus, [type=tel]:focus, [type=text]:focus, [type=time]:focus, [type=url]:focus,
+[type=week]:focus, select:focus, textarea:focus, trix-editor:focus {
+  border-color: hsl(var(--primary));
+  --tw-ring-color: hsl(var(--primary));
+  --tw-ring-color: hsl(var(--primary));
+}
+
+[multiple], [type=date], [type=datetime-local], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], select, textarea {
+  background-color: inherit;
+}
+
+trix-editor:focus {
+  border-color: hsl(var(--primary));
+  --tw-ring-color: hsl(var(--primary));
+  border-width: 2px;
+}

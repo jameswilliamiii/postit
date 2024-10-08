@@ -10,10 +10,12 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: ["class"],
   content: [
+    './app/components/**/*.rb', // Phlex components
     './app/views/**/*.{erb,haml,html,slim,rb}',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js',
+    './node_modules/flowbite/**/*.js',
     rbui_path
   ],
   theme: {
@@ -74,11 +76,21 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+        montserrat: ['Montserrat', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
+      },
+      fontWeight: {
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
       },
     },
   },
   plugins: [
     require("tailwindcss-animate"),
+    require('flowbite/plugin'),
   ],
 }
