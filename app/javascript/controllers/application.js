@@ -7,3 +7,6 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+
+import RBUI from "rbui-js";
+RBUI.initialize(application);

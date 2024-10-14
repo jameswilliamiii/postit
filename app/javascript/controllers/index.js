@@ -4,9 +4,8 @@
 
 import { application } from "./application"
 
+import FlashAlertsController from "./flash_alerts_controller"
+application.register("flash-alerts", FlashAlertsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-
-import RBUI from "rbui-js";
-RBUI.initialize(application);

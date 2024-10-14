@@ -31,12 +31,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true %>
   </head>
 
-  <body>
-    <%= render Components::Navigation.new %>
-
-
-    <main class="container">
-      <%= yield %>
-    </main>
+  <body class="min-h-screen flex flex-col">
+    <div class="flex flex-col flex-grow">
+      <%= render Components::Navigation.new %>
+      <div class="container">
+        <%= render Components::FlashAlerts.new(flash) %>
+      </div>
+      <main class="container flex flex-grow">
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

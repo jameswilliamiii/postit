@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="relative z-0 w-full group my-5">
+    <%= form.text_field :title, class: floating_label_input_class, placeholder: " " %>
+    <%= form.label :title, class: floating_label_class %>
   </div>
 
   <div class="my-5">
