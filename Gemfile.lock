@@ -99,7 +99,7 @@ GIT
 
 GIT
   remote: https://github.com/rbui-labs/rbui.git
-  revision: b9f846b142464c4c3a64511547f51f58bde1eb6f
+  revision: c99ce5899a4f0268704aa82b3db45dc7f9c01193
   branch: upgrade-to-phlex-v2-beta
   specs:
     rbui (1.0.0.pre.alpha.4)
