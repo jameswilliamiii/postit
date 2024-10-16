@@ -5,7 +5,7 @@ class Components::Navigation < Components::Base
 
   def view_template
     nav(class: nav_classes) {
-      div(class: "max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2") {
+      div(class: "flex flex-wrap items-center justify-between mx-auto px-4 py-2") {
         link_to(root_path, class: logo_classes) {
           "PostIt"
         }
