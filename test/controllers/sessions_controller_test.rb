@@ -7,7 +7,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
     end
-  end
+  end # GET /sessions/new
 
   describe "POST /sessions" do
     test "should authenticate and redirect" do
@@ -23,7 +23,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to new_session_url
     end
-  end
+  end # POST /sessions
 
   describe "DELETE /sessions" do
     test "should terminate and redirect" do
@@ -35,5 +35,5 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to new_session_url
     end
-  end
+  end # DELETE /sessions
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Components::Navigation < Components::Base
+class Components::Navigation::Bar < Components::Base
   include Phlex::Rails::Helpers::LinkTo
 
   def view_template
@@ -17,7 +17,14 @@ class Components::Navigation < Components::Base
         div(class: "hidden w-full md:block md:w-auto", id: "navbar") {
           ul(class: "flex flex-col font-medium mt-4 rounded-lg md:space-x-8 md:flex-row md:mt-0 md:border-0 bg-transparent") {
             li { render RBUI::Link.new(href: posts_path, variant: :ghost) { "Posts" } }
-            li { render RBUI::Link.new(href: new_session_path, variant: :ghost) { "Sign In" } }
+            li {
+              if helpers.authenticated?
+                render Navigation::WebDropdown.new
+                render Navigation::MobileDropdown.new
+              else
+                render RBUI::Link.new(href: new_session_path, variant: :ghost) { "Sign In" }
+              end
+            }
             li {
               render Components::NavThemeToggle.new
             }

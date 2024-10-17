@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :passwords, param: :token
   resources :posts
-  resource :session
+  resource  :registration, only: %i[new create]
+  resource  :session
 
 
   root "posts#index"

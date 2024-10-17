@@ -1,17 +1,17 @@
 module Components::Forms::Inputable
-  def label_class
+  def standard_label_class
     "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
   end
 
-  def input_class
+  def standard_input_class
     "
-      bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
+      bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
       block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white
     "
   end
 
   def floating_label_input_class
-    "block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer"
+    "block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b appearance-none focus:border-b-2 focus:outline-none focus:ring-0 peer"
   end
 
   def floating_label_class
@@ -22,13 +22,30 @@ module Components::Forms::Inputable
     "
   end
 
+  def field_with_error_class
+    "field_with_errors"
+  end
+
   def floating_label_input(form, attr, field_type = :text_field, options = {})
     base_class = "relative z-0 w-full mb-5 group"
     combined_class = [ base_class, options.delete(:class) ].join(" ")
+    label_class = floating_label_class
+    input_class = floating_label_input_class
+    if form_has_errors?(form, attr)
+      label_class = [ label_class, field_with_error_class ].join(" ")
+      input_class = [ input_class, field_with_error_class ].join(" ")
+    end
 
     div(class: combined_class) {
-      form.send(field_type, attr, class: floating_label_input_class, placeholder: " ", **options)
-      form.label attr, class: floating_label_class
+      form.send(field_type, attr, class: input_class, placeholder: " ", **options)
+      form.label attr, options[:label], class: label_class
+      if form_has_errors?(form, attr)
+        small(class: "error-msg my-2") { form.object.errors[attr].join(", ") }
+      end
     }
+  end
+
+  def form_has_errors?(form, attr)
+    form.object && form.object.errors[attr].any?
   end
 end

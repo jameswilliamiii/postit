@@ -14,6 +14,8 @@ class UserTest < ActiveSupport::TestCase
 
     should have_many(:posts).dependent(:destroy)
     should have_many(:sessions).dependent(:destroy)
+    should have_many(:memberships).dependent(:destroy)
+    should have_many(:organizations).through(:memberships)
   end
 
   describe "Attributes" do

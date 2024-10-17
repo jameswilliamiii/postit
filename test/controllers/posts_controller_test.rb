@@ -13,7 +13,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
     end
-  end
+  end # GET /posts
 
   describe "GET /posts/new" do
     test "should be successful" do
@@ -22,7 +22,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
     end
-  end
+  end # GET /posts/new
 
   describe "POST /posts" do
     test "should create a post and correctly redirect" do
@@ -32,7 +32,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to post_url(Post.last)
     end
-  end
+  end # POST /posts
 
   describe "GET /posts/:id" do
     let(:post) { create(:post, user: user) }
@@ -42,7 +42,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
     end
-  end
+  end # GET /posts/:id
 
   describe "GET /posts/:id/edit" do
     let(:post) { create(:post, user: user) }
@@ -60,7 +60,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to posts_url
     end
-  end
+  end # GET /posts/:id/edit
 
   describe "PATCH /posts/:id" do
     let(:post) { create(:post, user: user) }
@@ -82,7 +82,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to posts_url
     end
-  end
+  end # PATCH /posts/:id
 
   describe "DELETE /posts/:id" do
     test "should destroy post and correctly redirect" do
@@ -103,5 +103,5 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to posts_url
     end
-  end
+  end # DELETE /posts/:id
 end

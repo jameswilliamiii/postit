@@ -31,9 +31,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true %>
   </head>
 
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-950">
     <div class="flex flex-col flex-grow">
-      <%= render Components::Navigation.new %>
+      <%= render Components::Navigation::Bar.new %>
       <div class="container">
         <%= render Components::FlashAlerts.new(flash) %>
       </div>
