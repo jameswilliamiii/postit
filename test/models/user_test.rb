@@ -33,4 +33,23 @@ class UserTest < ActiveSupport::TestCase
       assert_equal email.downcase, user.email_address
     end
   end
+
+  describe "Instance Methods" do
+    describe "#base_organization" do
+      it "should return the user's base organization" do
+        membership = create(:membership, :owner)
+        user = membership.user
+        assert_equal membership.organization, user.base_organization
+      end
+
+      it "should create a base organization if one does not exist" do
+        user = create(:user)
+        assert_difference("Organization.count", 1) do
+          assert_difference("Membership.count", 1) do
+            user.base_organization
+          end
+        end
+      end
+    end
+  end
 end

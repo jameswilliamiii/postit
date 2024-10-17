@@ -27,4 +27,18 @@ class User < ApplicationRecord
   #-----------------------------------------------------------------------------
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  #-----------------------------------------------------------------------------
+  # Instance Methods
+  #-----------------------------------------------------------------------------
+
+  def base_organization
+    organizations.joins(:memberships).merge(Membership.owner).first || create_base_organization!
+  end
+
+  def create_base_organization!
+    organization = Organization.create!(name: name)
+    memberships.create!(organization: organization, role: :owner)
+    organization
+  end
 end

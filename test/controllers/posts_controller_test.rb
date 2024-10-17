@@ -13,11 +13,21 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
     end
+
+    test "should only get posts for the current organization" do
+      organization = create(:organization)
+      user.organizations << organization
+      Current.stubs(:organization).returns(organization)
+
+      post = create(:post, organization: organization)
+      get posts_url
+
+      assert_includes assigns(:posts), post
+    end
   end # GET /posts
 
   describe "GET /posts/new" do
     test "should be successful" do
-      create(:user) # TODO: replace once authentication built
       get new_post_url
 
       assert_response :success
