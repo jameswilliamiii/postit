@@ -1,16 +1,16 @@
 require "test_helper"
 
 class OrganizationTest < ActiveSupport::TestCase
-  #-----------------------------------------------------------------------------
-  # Associations
-  #-----------------------------------------------------------------------------
+  describe "Associations" do
+    subject { build(:organization) }
 
-  should have_many(:memberships).dependent(:destroy)
-  should have_many(:users).through(:memberships)
+    should have_many(:memberships).dependent(:destroy)
+    should have_many(:users).through(:memberships)
+  end
 
-  #-----------------------------------------------------------------------------
-  # Validations
-  #-----------------------------------------------------------------------------
+  describe "Validations" do
+    subject { build(:organization) }
 
-  should validate_presence_of(:name)
+    should validate_presence_of(:name)
+  end
 end

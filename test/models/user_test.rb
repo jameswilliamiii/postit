@@ -7,6 +7,14 @@ class UserTest < ActiveSupport::TestCase
     should validate_presence_of(:name)
     should validate_presence_of(:email_address)
     should validate_uniqueness_of(:email_address).ignoring_case_sensitivity
+
+    describe "password" do
+      it "should be at least 8 characters" do
+        user = build(:user, password: "1234567")
+        assert_not user.valid?
+        assert_includes user.errors[:password], "is too short (minimum is 8 characters)"
+      end
+    end
   end
 
   describe "Associations" do
