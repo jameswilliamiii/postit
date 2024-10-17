@@ -6,6 +6,7 @@ class OrganizationTest < ActiveSupport::TestCase
 
     should have_many(:memberships).dependent(:destroy)
     should have_many(:users).through(:memberships)
+    should have_many(:posts).dependent(:destroy)
   end
 
   describe "Validations" do

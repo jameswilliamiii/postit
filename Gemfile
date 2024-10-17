@@ -40,6 +40,7 @@ group :test do
   gem "minitest-rails"
   gem "minitest-spec-rails"
   gem "mocha"
+  gem "rails-controller-testing"
   gem "selenium-webdriver"
   gem "shoulda-context"
   gem "shoulda-matchers"

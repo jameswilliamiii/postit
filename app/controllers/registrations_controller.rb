@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
     User.transaction do
       @user = User.new(user_params)
       if @user.save
-        create_organization_for(@user)
+        @user.create_base_organization!
         start_new_session_for(@user)
         redirect_to root_path, notice: "Welcome to PostIt! Start adding projects and tasks."
       else
@@ -31,12 +31,5 @@ class RegistrationsController < ApplicationController
           :name
         ]
       )
-    end
-
-    def create_organization_for(user)
-      Organization.transaction do
-        organization = Organization.create!(name: user.name)
-        user.memberships.create!(organization: organization, role: :owner)
-      end
     end
 end

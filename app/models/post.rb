@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   # Associations
   #-----------------------------------------------------------------------------
   belongs_to :user
+  belongs_to :organization
   has_rich_text :message
 
   #-----------------------------------------------------------------------------

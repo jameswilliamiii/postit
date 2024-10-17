@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = current_organization.posts.order(created_at: :desc)
   end
 
   def show
@@ -47,7 +47,12 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.expect(post: [ :title, :message, :user_id ]).merge(user_id: current_user.id)
+      params.expect(
+        post: [ :title, :message, :user_id ]
+      ).merge(
+        user_id: current_user.id,
+        organization_id: current_organization.id
+      )
     end
 
     def authorize_user!
