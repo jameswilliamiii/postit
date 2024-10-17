@@ -22,7 +22,7 @@ class Components::Sessions::New < Components::Base
         }
         div(class: "mt-4 flex items-center") {
           RBUI::TypographyMuted() { "Not signed up yet?" }
-          RBUI::Link(href: "#") { "Create account" }
+          RBUI::Link(href: new_registration_path) { "Create account" }
         }
       end
     end

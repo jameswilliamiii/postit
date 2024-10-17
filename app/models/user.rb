@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :sessions, dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :organizations, through: :memberships
 
   #-----------------------------------------------------------------------------
   # Validations

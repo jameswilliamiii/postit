@@ -15,3 +15,25 @@ trix-editor:focus {
   --tw-ring-color: hsl(var(--primary));
   border-width: 2px;
 }
+
+
+label.field_with_errors,
+.peer:focus~.field_with_errors {
+  color: hsl(var(--destructive));
+}
+
+input.field_with_errors,
+input.field_with_errors:focus,
+select.field_with_errors,
+select.field_with_errors:focus,
+textarea.field_with_errors,
+textarea.field_with_errors:focus {
+  border-color: hsl(var(--destructive));
+  &:focus {
+    border-color: hsl(var(--destructive));
+  }
+}
+
+.error-msg {
+  color: hsl(var(--destructive));
+}
