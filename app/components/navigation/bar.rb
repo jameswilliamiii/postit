@@ -17,16 +17,14 @@ class Components::Navigation::Bar < Components::Base
         div(class: "hidden w-full md:block md:w-auto", id: "navbar") {
           ul(class: "flex flex-col font-medium mt-4 rounded-lg md:space-x-8 md:flex-row md:mt-0 md:border-0 bg-transparent") {
             li { render RBUI::Link.new(href: posts_path, variant: :ghost) { "Posts" } }
+            li(class: "flex items-center") { render Components::Navigation::WebThemeDropdown.new }
             li {
               if helpers.authenticated?
-                render Navigation::WebDropdown.new
-                render Navigation::MobileDropdown.new
+                render Navigation::WebAccountDropdown.new
+                render Navigation::MobileAccountDropdown.new
               else
                 render RBUI::Link.new(href: new_session_path, variant: :ghost) { "Sign In" }
               end
-            }
-            li {
-              render Components::NavThemeToggle.new
             }
           }
         }

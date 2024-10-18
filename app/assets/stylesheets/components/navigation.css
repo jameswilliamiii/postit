@@ -1,0 +1,8 @@
+nav [data-rbui--accordion-open-value="true"] button{
+      background-color: hsl(var(--muted));
+}
+
+nav .theme-icons svg {
+      width: 25px;
+}
+
