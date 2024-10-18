@@ -9,8 +9,13 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  namespace :account do
+    resource :password, only: %i[edit update]
+  end
+
   resources :passwords, param: :token
   resources :posts
+  resource  :profile, only: %i[show update]
   resource  :registration, only: %i[new create]
   resource  :session
 

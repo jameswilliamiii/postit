@@ -22,30 +22,36 @@ module Components::Forms::Inputable
     "
   end
 
-  def field_with_error_class
-    "field_with_errors"
-  end
-
   def floating_label_input(form, attr, field_type = :text_field, options = {})
     base_class = "relative z-0 w-full mb-5 group"
     combined_class = [ base_class, options.delete(:class) ].join(" ")
     label_class = floating_label_class
     input_class = floating_label_input_class
-    if form_has_errors?(form, attr)
-      label_class = [ label_class, field_with_error_class ].join(" ")
-      input_class = [ input_class, field_with_error_class ].join(" ")
-    end
 
-    div(class: combined_class) {
-      form.send(field_type, attr, class: input_class, placeholder: " ", **options)
+    input_data = build_input_data(options.delete(:data) || {})
+
+    RBUI::FormField(class: combined_class) {
+      form.send(field_type, attr, class: input_class, placeholder: " ", data: input_data, **options)
       form.label attr, options[:label], class: label_class
+      render RBUI::FormFieldError.new(class: "my-2 text-xs")
       if form_has_errors?(form, attr)
-        small(class: "error-msg my-2") { form.object.errors[attr].join(", ") }
+        render RBUI::FormFieldError.new(class: "my-2 text-xs") { form.object.errors[attr].join(", ") }
       end
     }
   end
 
   def form_has_errors?(form, attr)
     form.object && form.object.errors[attr].any?
+  end
+
+  def required_attribute?(form, attr)
+    form.object.class.validators_on(attr).any? { |v| v.kind == :presence }
+  end
+
+  def build_input_data(data)
+    data.symbolize_keys!
+    data.merge!(rbui__form_field_target: "input")
+    data[:action] = [ data[:action], "input->rbui--form-field#onInput invalid->rbui--form-field#onInvalid" ].compact.join(" ")
+    data
   end
 end
