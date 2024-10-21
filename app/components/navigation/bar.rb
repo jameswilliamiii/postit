@@ -47,6 +47,6 @@ class Components::Navigation::Bar < Components::Base
   end
 
   def logo_classes
-    "flex items-center space-x-3 font-bold font-special-elite text-5xl text-black dark:text-white pt-3"
+    "flex items-center space-x-3 font-bold font-special-elite text-3xl text-black dark:text-white"
   end
 end

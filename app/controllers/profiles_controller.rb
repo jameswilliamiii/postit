@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     if @user.update(user_params)
       redirect_to profile_path, notice: "Profile updated!"
     else
-      flash.now[:alert] = "Profile could not be updated!"
+      flash.now[:alert] = "Your profile could not be updated. Please address any errors below."
       render :show, status: :unprocessable_entity
     end
   end

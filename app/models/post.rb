@@ -10,4 +10,5 @@ class Post < ApplicationRecord
   # Validations
   #-----------------------------------------------------------------------------
   validates :title, presence: true
+  validates :message, presence: true
 end

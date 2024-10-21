@@ -31,7 +31,7 @@ class Account::PasswordsControllerTest < ActionDispatch::IntegrationTest
       patch account_password_url, params: params
 
       assert_redirected_to account_password_url
-      assert_equal "Password updated!", flash[:notice]
+      assert_equal "Your password was updated!", flash[:notice]
     end
 
     it "should render edit when password confirmation does not match" do
@@ -40,7 +40,7 @@ class Account::PasswordsControllerTest < ActionDispatch::IntegrationTest
       patch account_password_url, params: params
 
       assert_response :unprocessable_entity
-      assert_equal "Password not updated!", flash[:alert]
+      assert_equal "Your password could not updated. Please address any errors below.", flash[:alert]
     end
   end
 end

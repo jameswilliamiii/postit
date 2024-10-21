@@ -3,5 +3,6 @@ FactoryBot.define do
     user
     organization
     title { "MyString" }
+    message { "MyText" }
   end
 end

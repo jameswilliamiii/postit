@@ -44,11 +44,7 @@ module Components::Forms::Inputable
     form.object && form.object.errors[attr].any?
   end
 
-  def required_attribute?(form, attr)
-    form.object.class.validators_on(attr).any? { |v| v.kind == :presence }
-  end
-
-  def build_input_data(data)
+  def build_input_data(data = {})
     data.symbolize_keys!
     data.merge!(rbui__form_field_target: "input")
     data[:action] = [ data[:action], "input->rbui--form-field#onInput invalid->rbui--form-field#onInvalid" ].compact.join(" ")

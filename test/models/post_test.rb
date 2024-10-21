@@ -11,6 +11,7 @@ class PostTest < ActiveSupport::TestCase
     subject { build(:post, title: "test") }
 
     should validate_presence_of(:title)
+    should validate_presence_of(:message)
     should have_rich_text(:message)
   end
 end
