@@ -21,23 +21,25 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post, notice: "Post was successfully created."
+      redirect_to @post, notice: "Your post was successfully created."
     else
+      flash.now[:alert] = "Your post could not be created. Please address any errors below."
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "Post was successfully updated.", status: :see_other
+      redirect_to @post, notice: "Your post was successfully updated.", status: :see_other
     else
+      flash.now[:alert] = "Your post could not be updated. Please address any errors below."
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @post.destroy!
-    redirect_to posts_path, notice: "Post was successfully destroyed.", status: :see_other
+    redirect_to posts_path, notice: "Your post was successfully deleted.", status: :see_other
   end
 
   private

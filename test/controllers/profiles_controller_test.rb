@@ -37,7 +37,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
       patch profile_path, params: params
 
       assert_response :unprocessable_entity
-      assert_equal "Profile could not be updated!", flash[:alert]
+      assert_equal "Your profile could not be updated. Please address any errors below.", flash[:alert]
     end
   end
 end

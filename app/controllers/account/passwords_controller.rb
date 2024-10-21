@@ -6,9 +6,9 @@ class Account::PasswordsController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to account_password_path, notice: "Password updated!"
+      redirect_to account_password_path, notice: "Your password was updated!"
     else
-      flash.now[:alert] = "Password not updated!"
+      flash.now[:alert] = "Your password could not updated. Please address any errors below."
       render :edit, status: :unprocessable_entity
     end
   end

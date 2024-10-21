@@ -10,14 +10,74 @@
   background-color: inherit;
 }
 
-trix-editor:focus {
-  border-color: hsl(var(--primary));
-  --tw-ring-color: hsl(var(--primary));
-  border-width: 2px;
-}
-
 
 label.field_with_errors,
 .peer:focus~.field_with_errors {
   color: hsl(var(--destructive));
+}
+
+/* Trix editor chnges for posts form */
+.posts-form trix-toolbar {
+  position: sticky;
+  top: 56px;
+  border-top: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+}
+
+.dark .posts-form trix-toolbar {
+  background-color: #1f2938;
+}
+
+.posts-form trix-toolbar .trix-button-row {
+  justify-content: flex-start;
+}
+
+.posts-form trix-toolbar .trix-button-group {
+  border: 0;
+  margin-bottom: 0;
+}
+
+.posts-form trix-toolbar .trix-button {
+  padding: 1.5rem;
+  outline: none;
+  border: none;
+  border-bottom: none;
+}
+
+.posts-form trix-toolbar .trix-button:not(:first-child) {
+  border-left: none;
+}
+
+.posts-form trix-toolbar .trix-button--icon {
+  width: 2rem;
+  height: 2rem;
+  max-width: calc(0.8em + 4vw);
+  text-indent: -9999px;
+}
+
+.posts-form  trix-toolbar .trix-button--icon:before {
+  background-size: auto;;
+}
+
+.posts-form .trix-button--icon-decrease-nesting-level,
+.posts-form .trix-button--icon-increase-nesting-level,
+.posts-form .trix-button-group-spacer {
+  display: none;
+}
+
+.posts-form trix-toolbar .trix-button-group:not(:first-child) {
+  margin-left: 0
+}
+
+.posts-form trix-toolbar .trix-button-group:last-child {
+  margin-left: auto;
+}
+
+.posts-form trix-editor {
+  min-height: 3rem;
+}
+
+.posts-form trix-editor:empty::before {
+  color: #9ca3af; /* This is the hex value for Tailwind's gray-400 */
 }
