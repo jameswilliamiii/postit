@@ -20,8 +20,9 @@ class Components::Account::Password::Edit < Components::Base
         div {
           floating_label_input(form, :password_confirmation, :password_field, required: true)
         }
-        div(class: "flex justify-center") {
-          render Components::Forms::Submit.new(class: "w-full md:w-1/2") { "Update password" }
+        div(class: "my-7") {
+          render Components::Forms::Submit.new(class: "w-max") { "Update my password" }
+          render RBUI::Link.new(variant: :secondary, href: root_path, class: "ms-3") { "Cancel" }
         }
       end
     end

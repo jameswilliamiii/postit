@@ -7,9 +7,9 @@ class Components::ConfirmDialog < Components::Base
   end
 
   def view_template(&)
-    render RBUI::AlertDialog.new do
-      render RBUI::AlertDialogTrigger.new do
-        RBUI::Button(**@options, &)
+    render RBUI::AlertDialog.new(**@options) do
+      render RBUI::AlertDialogTrigger.new(**@options) do
+        @options[:trigger]
       end
       render RBUI::AlertDialogContent.new do
         render RBUI::AlertDialogHeader.new do

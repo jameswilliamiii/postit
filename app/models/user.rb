@@ -29,6 +29,12 @@ class User < ApplicationRecord
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   #-----------------------------------------------------------------------------
+  # Callbacks
+  #-----------------------------------------------------------------------------
+
+  before_create :assign_random_avatar_color
+
+  #-----------------------------------------------------------------------------
   # Instance Methods
   #-----------------------------------------------------------------------------
 
@@ -40,5 +46,11 @@ class User < ApplicationRecord
     organization = Organization.create!(name: name)
     memberships.create!(organization: organization, role: :owner)
     organization
+  end
+
+  private
+
+  def assign_random_avatar_color
+    self.avatar_color = Components::Account::Profile::Form::AVATAR_COLORS.sample
   end
 end

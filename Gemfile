@@ -8,6 +8,7 @@ gem "cssbundling-rails"
 gem "image_processing", "~> 1.2"
 gem "jsbundling-rails"
 gem "kamal", ">= 2.0.0.rc2", require: false
+gem "loofah"
 gem "pg", "~> 1.1"
 gem "phlex-rails", "2.0.0.beta2"
 gem "propshaft"

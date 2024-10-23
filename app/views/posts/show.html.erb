@@ -1,17 +1,5 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto w-full">
-    <%= render @post %>
+<% content_for :title, @post.title %>
 
-    <%= render RBUI::Link.new(href: edit_post_path(@post), variant: :outline, class: "me-3") { "Edit" } %>
-
-    <%= render Components::ConfirmDialog.new(
-      variant: :destructive,
-      href: post_path(@post),
-      title: "Are you sure?",
-      description: "This action cannot be undone. This will permanently delete your post.",
-      action_text: "Delete post",
-      cancel_text: "Cancel",
-      data: { turbo_method: :delete },
-      ) { "Delete" } %>
-  </div>
+<div class="bg-white dark:bg-gray-800 px-4 md:px-16 py-4 md:py-16 rounded shadow-md mx-auto container relative">
+  <%= render Components::Posts::Show.new(post: @post) %>
 </div>

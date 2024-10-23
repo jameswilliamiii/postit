@@ -1,15 +1,5 @@
-<div class="w-full">
-  <% content_for :title, "Posts" %>
+<% content_for :title, [current_organization.name, "-", "Posts"].join(" ") %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Posts</h1>
-    <%= render RBUI::Link.new(href: new_post_path, variant: :primary) { "New post" } %>
-  </div>
-
-  <div id="posts" class="min-w-full">
-    <% @posts.each do |post| %>
-      <%= render post %>
-      <%= render RBUI::Link.new(href: post_path(post), variant: :outline) { "View post" } %>
-    <% end %>
-  </div>
+<div class="bg-white dark:bg-gray-800 px-4 md:px-16 py-4 md:py-16 rounded shadow-md mx-auto container">
+  <%= render Components::Posts::Index.new(posts: @posts) %>
 </div>

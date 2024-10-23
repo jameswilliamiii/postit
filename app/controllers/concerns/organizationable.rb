@@ -3,6 +3,8 @@ module Organizationable
 
   included do
     before_action :assign_organization
+
+    helper_method :current_organization
   end
 
   def current_organization

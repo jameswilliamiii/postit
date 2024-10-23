@@ -34,6 +34,15 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  describe "Callbacks" do
+    describe "before_create :assign_random_avatar_color" do
+      it "should assign a random avatar color before creating a user" do
+        user = create(:user)
+        assert_includes Components::Account::Profile::Form::AVATAR_COLORS, user.avatar_color
+      end
+    end
+  end
+
   describe "Instance Methods" do
     describe "#base_organization" do
       it "should return the user's base organization" do

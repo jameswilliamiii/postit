@@ -97,4 +97,9 @@ module.exports = {
     require("tailwindcss-animate"),
     require('flowbite/plugin'),
   ],
+  // Dynamically generated classes. They will not be rendered unless defined here.
+  safelist: [
+    'bg-red-500', 'bg-orange-500', 'bg-primary', 'bg-teal-500',
+    'bg-blue-500', 'bg-indigo-500', 'bg-pink-500', 'bg-stone-500'
+  ],
 }

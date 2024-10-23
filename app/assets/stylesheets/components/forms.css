@@ -16,21 +16,40 @@ label.field_with_errors,
   color: hsl(var(--destructive));
 }
 
-/* Trix editor chnges for posts form */
+/* Trix editor changes for posts form */
 .posts-form trix-toolbar {
   position: sticky;
   top: 56px;
   border-top: 1px solid hsl(var(--border));
   border-bottom: 1px solid hsl(var(--border));
   background-color: hsl(var(--background));
+  z-index: 1 !important;
 }
 
 .dark .posts-form trix-toolbar {
   background-color: #1f2938;
+  z-index: 2 !important;
 }
 
 .posts-form trix-toolbar .trix-button-row {
   justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .posts-form .trix-button-row .trix-button-group:first-child {
+    margin-left: 3rem;
+  }
+
+  .posts-form .trix-button-row .trix-button-group:last-child {
+    margin-right: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .posts-form .trix-button-row .trix-button-group {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .posts-form trix-toolbar .trix-button-group {
@@ -42,11 +61,6 @@ label.field_with_errors,
   padding: 1.5rem;
   outline: none;
   border: none;
-  border-bottom: none;
-}
-
-.posts-form trix-toolbar .trix-button:not(:first-child) {
-  border-left: none;
 }
 
 .posts-form trix-toolbar .trix-button--icon {
@@ -56,8 +70,8 @@ label.field_with_errors,
   text-indent: -9999px;
 }
 
-.posts-form  trix-toolbar .trix-button--icon:before {
-  background-size: auto;;
+.posts-form trix-toolbar .trix-button--icon:before {
+  background-size: auto;
 }
 
 .posts-form .trix-button--icon-decrease-nesting-level,
@@ -67,7 +81,7 @@ label.field_with_errors,
 }
 
 .posts-form trix-toolbar .trix-button-group:not(:first-child) {
-  margin-left: 0
+  margin-left: 0;
 }
 
 .posts-form trix-toolbar .trix-button-group:last-child {
@@ -79,5 +93,15 @@ label.field_with_errors,
 }
 
 .posts-form trix-editor:empty::before {
-  color: #9ca3af; /* This is the hex value for Tailwind's gray-400 */
+  color: #9ca3af; /* Tailwind's gray-400 */
+}
+
+.posts-form blockquote {
+  border-left: 4px solid hsl(var(--secondary));
+  padding-left: 1rem;
+  margin-left: 0;
+}
+
+input[type="radio"]:checked + label {
+  border-color: #3b82f6;
 }

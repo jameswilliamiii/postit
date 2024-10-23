@@ -17,7 +17,7 @@ class Components::Posts::Form < Components::Base
       form_with(model: post, class: "posts-form") do |form|
         div(class: "px-4 md:px-16 mb-2") {
           RBUI::FormField() do
-            form.text_field :title, class: text_field_class, placeholder: "Type a headline...", required: true, data: build_input_data
+            form.text_field :title, class: text_field_class, placeholder: "Type a headline...", required: true, autofocus: post.persisted? ? false : true, data: build_input_data
             render RBUI::FormFieldError.new(class: "my-2 text-xs")
             if form_has_errors?(form, :title)
               render RBUI::FormFieldError.new(class: "my-2 text-xs") { form.object.errors[:title].join(", ") }
@@ -35,7 +35,7 @@ class Components::Posts::Form < Components::Base
         end
 
         div(class: "px-4 md:px-16 my-7") {
-          render RBUI::Button.new(type: :submit) { submit_text }
+          render Components::Forms::Submit.new(class: "w-max") { submit_text }
           render RBUI::Link.new(variant: :secondary, href: cancel_path, class: "ms-3") { "Cancel" }
         }
       end
