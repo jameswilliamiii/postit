@@ -10,7 +10,7 @@ class Components::Posts::Actions < Components::Base
   def view_template
     RBUI::DropdownMenu(options: { placement: "bottom" }) do
       RBUI::DropdownMenuTrigger(class: "w-full") do
-        RBUI::Button(variant: :outline, class: "w-full justify-center text-gray-500 dark:text-gray-400 rounded-full p-2") {
+        RBUI::Button(variant: :outline, class: "w-full justify-center text-gray-300 dark:text-gray-400 rounded-full p-2 drop-shadow-sm") {
           render Components::InlineSvg.new("dots-horizontal.svg")
         }
       end

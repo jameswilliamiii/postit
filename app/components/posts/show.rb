@@ -14,9 +14,11 @@ class Components::Posts::Show < Components::Base
 
   def view_template
     div {
-      div(class: "relative md:absolute md:top-16 md:right-16 w-auto flex justify-end") {
-        render Components::Posts::Actions.new(post: post)
-      }
+      if post.user == Current.user
+        div(class: "relative md:absolute md:top-16 md:right-16 w-auto flex justify-end") {
+          render Components::Posts::Actions.new(post: post)
+        }
+      end
       article(class: "pb-4 md:pb-6") {
         h1(class: "text-3xl font-bold mb-4") { post.title }
         div {
