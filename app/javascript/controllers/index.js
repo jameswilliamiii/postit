@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ActionsLinkController from "./actions_link_controller"
+application.register("actions-link", ActionsLinkController)
+
 import FlashAlertsController from "./flash_alerts_controller"
 application.register("flash-alerts", FlashAlertsController)
 

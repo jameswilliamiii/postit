@@ -413,6 +413,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jsbundling-rails
   kamal (>= 2.0.0.rc2)
+  loofah
   minitest-rails
   minitest-spec-rails
   mocha
