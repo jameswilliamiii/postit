@@ -1,5 +1,10 @@
 <% content_for :title, @post.title %>
 
-<div class="bg-white dark:bg-gray-800 px-4 md:px-16 py-4 md:py-16 rounded shadow-md mx-auto container relative">
+<div class="container">
+  <%= render Components::Breadcrumbs.new(breadcrumbs: [
+    { title: "Posts", path: posts_path },
+    { title: @post.title.truncate(30), path: post_path(@post) }
+  ]) %>
+<div class="bg-white dark:bg-gray-800 px-4 md:px-16 py-4 md:py-16 mt-10 md:mt-0 rounded shadow-md mx-auto container relative">
   <%= render Components::Posts::Show.new(post: @post) %>
 </div>

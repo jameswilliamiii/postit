@@ -1,8 +1,18 @@
 nav [data-rbui--accordion-open-value="true"] button{
-      background-color: hsl(var(--muted));
+  background-color: hsl(var(--muted));
 }
 
-nav .theme-icons svg {
-      width: 25px;
+nav svg {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
+nav.mobile svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+nav.mobile.top-bar svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

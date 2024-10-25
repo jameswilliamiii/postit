@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 class Components::Navigation::WebThemeDropdown < Components::Base
+  attr_reader :options
+
+  def initialize(options = {})
+    @options = options
+  end
+
   def view_template
-    RBUI::DropdownMenu(options: { placement: "bottom" }, class: "hidden md:flex", data: { controller: "system-theme" }, tabindex: 0) do
-      RBUI::DropdownMenuTrigger(class: "w-full") do
+    RBUI::DropdownMenu(options: { placement: "bottom" }, class: "flex cursor-pointer", data: { controller: "system-theme" }, tabindex: 0) do
+      RBUI::DropdownMenuTrigger(**options) do
         div(class: "flex items-center justify-center theme-icons") {
           div(class: "block dark:hidden") {
-            render InlineSvg.new("sun.svg")
+            render InlineSvg.new("sun-solid.svg")
           }
           div(class: "hidden dark:block") {
-            render InlineSvg.new("moon.svg")
+            render InlineSvg.new("moon-solid.svg")
           }
           "Test"
         }
@@ -17,10 +23,7 @@ class Components::Navigation::WebThemeDropdown < Components::Base
       render RBUI::DropdownMenuContent.new do
         div(data: { action: "click->system-theme#light" }) {
           render RBUI::DropdownMenuItem.new do
-            div(class: "flex items-center") {
-              span {
-                render InlineSvg.new("sun.svg")
-              }
+            div(class: "flex items-center w-2 h-2") {
               RBUI::TypographySmall(class: "ms-2") { "Light" }
             }
           end
@@ -29,9 +32,6 @@ class Components::Navigation::WebThemeDropdown < Components::Base
         div(data: { action: "click->system-theme#dark" }) {
           render RBUI::DropdownMenuItem.new do
             div(class: "flex items-center") {
-              span {
-                render InlineSvg.new("moon.svg")
-              }
               RBUI::TypographySmall(class: "ms-2") { "Dark" }
             }
           end
@@ -40,9 +40,6 @@ class Components::Navigation::WebThemeDropdown < Components::Base
         div(data: { action: "click->system-theme#default" }) {
           render RBUI::DropdownMenuItem.new do
             div(class: "flex items-center") {
-              span {
-                render InlineSvg.new("computer.svg")
-              }
               RBUI::TypographySmall(class: "ms-2") { "System" }
             }
           end

@@ -13,14 +13,22 @@ class Components::Posts::Show < Components::Base
   end
 
   def view_template
+    content_for(:mobile_top_bar) {
+      render Components::MobileTopBar.new {
+        link_to posts_path, class: "flex items-center" do
+          render Components::InlineSvg.new("arrow-left.svg")
+          span(class: "ms-2") { "Back" }
+        end
+      }
+    }
     div {
-      if post.user == Current.user
-        div(class: "relative md:absolute md:top-16 md:right-16 w-auto flex justify-end") {
-          render Components::Posts::Actions.new(post: post)
-        }
-      end
       article(class: "pb-4 md:pb-6") {
-        h1(class: "text-3xl font-bold mb-4") { post.title }
+        div(class: "flex justify-between items-start") {
+          h1(class: "text-3xl font-bold mb-4") { post.title }
+          if post.user == Current.user
+            render Components::Posts::Actions.new(post: post)
+          end
+        }
         div {
           safe post.message.body.to_s
         }

@@ -1,6 +1,6 @@
 <% content_for :title, [current_organization.name, "-", "Posts"].join(" ") %>
 
 <div class="bg-white dark:bg-gray-800 px-4 md:px-16 py-4 md:py-16 rounded shadow-md mx-auto container relative">
-  <%= render Components::Posts::NewButton.new %>
   <%= render Components::Posts::Index.new(posts: @posts) %>
 </div>
+<%= render Components::Posts::NewButton.new %>

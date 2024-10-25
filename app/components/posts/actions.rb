@@ -10,8 +10,8 @@ class Components::Posts::Actions < Components::Base
   def view_template
     RBUI::DropdownMenu(options: { placement: "bottom" }) do
       RBUI::DropdownMenuTrigger(class: "w-full") do
-        RBUI::Button(variant: :outline, class: "w-full justify-center text-gray-300 dark:text-gray-400 rounded-full p-2 drop-shadow-sm") {
-          render Components::InlineSvg.new("dots-horizontal.svg")
+        RBUI::Button(variant: :link, class: "w-8 p-0 text-color-gray-600") {
+          render Components::InlineSvg.new("ellipsis-vertical.svg")
         }
       end
       render RBUI::DropdownMenuContent.new do
@@ -28,7 +28,7 @@ class Components::Posts::Actions < Components::Base
             data: { turbo_method: :delete, action: "click->actions-link#prevent" },
             class: "block"
           ) { "Delete" }
-         }
+        }
       end
     end
   end
