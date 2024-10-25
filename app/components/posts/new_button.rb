@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class Components::Posts::NewButton < Components::Base
-  include Phlex::Rails::Helpers::LinkTo
-
   def view_template
-    div(class: "sticky flex justify-end top-[calc(100vh-3rem)] md:top-[calc(100vh-7rem)] -me-8 md:-me-10 ms-auto z-10") {
+    div(class: base_class) {
       render RBUI::Tooltip do
         render RBUI::TooltipTrigger do
-          link_to new_post_path, class: "ms-auto rounded-full bg-primary hover:bg-primary/75 transform hover:rotate-180 transition duration-500 text-white p-2 flex items-center justify-center drop-shadow-lg" do
+          link_to new_post_path, class: button_class, data: { controller: "scroll-opacity" } do
             div(class: "w-6 h-6") {
               render Components::InlineSvg.new("plus.svg")
             }
@@ -16,5 +14,16 @@ class Components::Posts::NewButton < Components::Base
         RBUI::TooltipContent() { "New post" }
       end
     }
+  end
+
+  def base_class
+    "fixed right-5 top-[calc(100vh-7rem)] md:top-[calc(100vh-4rem)] md:right-24 z-10"
+  end
+
+  def button_class
+    "
+      inline-flex rounded-full bg-primary transform hover:rotate-180 transition duration-500
+      p-3 md:p-4 items-center justify-center drop-shadow-lg text-white
+    "
   end
 end

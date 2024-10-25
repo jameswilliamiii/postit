@@ -10,5 +10,8 @@ application.register("actions-link", ActionsLinkController)
 import FlashAlertsController from "./flash_alerts_controller"
 application.register("flash-alerts", FlashAlertsController)
 
+import ScrollOpacityController from "./scroll_opacity_controller"
+application.register("scroll-opacity", ScrollOpacityController)
+
 import SystemThemeController from "./system_theme_controller"
 application.register("system-theme", SystemThemeController)

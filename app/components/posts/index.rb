@@ -17,7 +17,7 @@ class Components::Posts::Index < Components::Base
   def view_template
     div(id: "posts", class: "min-w-full") {
       @posts.each do |post|
-        article(class: "border-b border-gray-300 dark:border-gray-600 last:border-b-0 py-4 md:py-6 last:mb-0 relative") {
+        article(class: "border-b border-gray-300 dark:border-gray-600 last:border-b-0 py-4 first:pt-0 md:py-6 last:mb-0 relative") {
           div(class: "flex") {
             div(class: "pe-6") {
               render RBUI::HoverCard do

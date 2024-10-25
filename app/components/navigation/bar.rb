@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Components::Navigation::Bar < Components::Base
-  include Phlex::Rails::Helpers::LinkTo
-
   def view_template
     nav(class: nav_classes) {
       div(class: "flex flex-wrap items-center justify-between mx-auto px-4 py-2") {
@@ -21,7 +19,6 @@ class Components::Navigation::Bar < Components::Base
             li {
               if helpers.authenticated?
                 render Navigation::WebAccountDropdown.new
-                render Navigation::MobileAccountDropdown.new
               else
                 render RBUI::Link.new(href: new_session_path, variant: :ghost) { "Sign In" }
               end
@@ -34,8 +31,8 @@ class Components::Navigation::Bar < Components::Base
 
   def nav_classes
     "
-      supports-backdrop-blur:bg-background/80 sticky top-0 z-50 w-full border-b bg-background/80
-      backdrop-blur-2xl backdrop-saturate-200 mb-4
+      supports-backdrop-blur:bg-background/80 fixed top-0 z-50 w-full border-b bg-background/80
+      backdrop-blur-2xl backdrop-saturate-200 mb-4 hidden md:block
     "
   end
 

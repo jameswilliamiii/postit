@@ -13,7 +13,15 @@ class Components::Posts::Form < Components::Base
   end
 
   def view_template
-    div(class: "bg-white dark:bg-gray-800 py-8 px-0 rounded shadow-md mx-auto container") do
+    div(class: "bg-white dark:bg-gray-800 py-8 px-0 mt-10 md:mt-0 rounded shadow-md mx-auto container") do
+      content_for(:mobile_top_bar) {
+        render Components::MobileTopBar.new {
+          link_to back_path, class: "flex items-center" do
+            render Components::InlineSvg.new("arrow-left.svg")
+            span(class: "ms-2") { "Back" }
+          end
+        }
+      }
       form_with(model: post, class: "posts-form") do |form|
         div(class: "px-4 md:px-16 mb-2") {
           RBUI::FormField() do
@@ -48,5 +56,9 @@ class Components::Posts::Form < Components::Base
 
   def text_area_class
     "block rounded-md border-0 outline-none px-4 md:px-16 py-2 mt-2 w-full focus:ring-opacity-0 focus:ring-0 placeholder-gray-400"
+  end
+
+  def back_path
+    post.persisted? ? post_path(post) : posts_path
   end
 end
