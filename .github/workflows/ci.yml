@@ -34,19 +34,21 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Cache Node.js modules
+      - name: Cache Yarn dependencies
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            .yarn/cache
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install --immutable
 
       - name: Audit JavaScript dependencies
-        run: npm audit
+        run: yarn audit
 
   lint:
     runs-on: ubuntu-latest
