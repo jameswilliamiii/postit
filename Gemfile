@@ -10,7 +10,7 @@ gem "jsbundling-rails"
 gem "kamal", ">= 2.0.0.rc2", require: false
 gem "loofah"
 gem "pg", "~> 1.5"
-gem "phlex-rails", "2.0.0.beta2"
+gem "phlex-rails", "2.0.0.rc1"
 gem "propshaft"
 gem "puma", ">= 5.0"
 gem "rbui", github: "rbui-labs/rbui", branch: "upgrade-to-phlex-v2-beta" # TODO: Upgrade to released version when available
